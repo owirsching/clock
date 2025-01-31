@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <title>Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            color: #fe696e;
+            font-family: 'Bricolage Grotesque', Arial, sans-serif;
+            font-size: 50px;
+            font-weight: 800;
+            margin: 0;
+            
+        }
+        #hours, #minutes {
+            padding: 0px 30px;
+            border-radius: 10px;
+            background: #fbf2ef;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: all .2s ease-out;
+            font-size: clamp(30vw, 40vw, 50vw);
+            line-height: clamp(28vw, 38vw, 48vw);
+            text-align: center;
+        }
+
+        #clock {
+            display: flex;
+            justify-content: center;
+            max-width: 90%;
+            gap: 20px;
+        }
+        
+        @media screen and (max-width: 800px) {
+            #clock {
+                flex-direction: column;
+                max-width: 90%;
+                margin: 20px;
+            }
+            #hours, #minutes {
+                margin: 5px;
+                max-width: 90%;
+            }
+    
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="clock">
+        <div id="hours"></div>
+        <div id="minutes"></div>
+    </div>
+    
+    
+
+    <script>
+        function updateClock() {
+            let now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+
+            document.getElementById('hours').textContent = `${hours}`;
+            document.getElementById('minutes').textContent = `${minutes}`;
+
+        }
+        
+        setInterval(updateClock, 1000); // Update clock every second
+        updateClock(); // Initialize clock immediately
+    </script>
+
+</body>
+</html>
